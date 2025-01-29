@@ -1,0 +1,250 @@
+/* --------------------------------------------------------------BLUE THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Blue_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Blue_Theme"]:root {
+    --bs-primary: #5d87ff;
+    --bs-primary-rgb: 93, 135, 255;
+    --bs-light-primary: rgba(93, 135, 255, 0.1);
+    --bs-primary-bg-subtle: rgba(93, 135, 255, 0.1);
+    --bs-secondary: #49beff;
+    --bs-secondary-rgb: 73, 190, 255;
+    --bs-light-secondary: rgba(73, 190, 255, 0.1);
+    --bs-secondary-bg-subtle: rgba(73, 190, 255, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Blue_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Blue_Theme"]:root .btn-primary {
+    --bs-btn-bg: #5d87ff;
+    --bs-btn-border-color: #5d87ff;
+    --bs-btn-hover-bg: #4f73d9;
+    --bs-btn-hover-border-color: #4f73d9;
+}
+[data-bs-theme="dark"][data-color-theme="Blue_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Blue_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #49beff;
+    --bs-btn-border-color: #49beff;
+    --bs-btn-hover-bg: #3ea2d9;
+    --bs-btn-hover-border-color: #3a98cc;
+}
+/* --------------------------------------------------------------BLUE THEME END---------------------------------------------- */
+
+/* --------------------------------------------------------------AQUA THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Aqua_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Aqua_Theme"]:root {
+    --bs-primary: #0074ba;
+    --bs-primary-rgb: 0, 116, 186;
+    --bs-light-primary: rgba(0, 116, 186, 0.1);
+    --bs-primary-bg-subtle: rgba(0, 116, 186, 0.1);
+    --bs-secondary: #47d7bc;
+    --bs-secondary-rgb: 71, 215, 188;
+    --bs-light-secondary: rgba(71, 215, 188, 0.1);
+    --bs-secondary-bg-subtle: rgba(71, 215, 188, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Aqua_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Aqua_Theme"]:root .btn-primary {
+    --bs-btn-bg: #0074ba;
+    --bs-btn-border-color: #0074ba;
+    --bs-btn-hover-bg: #00639e;
+    --bs-btn-hover-border-color: #00639e;
+}
+[data-bs-theme="dark"][data-color-theme="Aqua_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Aqua_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #47d7bc;
+    --bs-btn-border-color: #47d7bc;
+    --bs-btn-hover-bg: #3cb7a0;
+    --bs-btn-hover-border-color: #3cb7a0;
+}
+/* --------------------------------------------------------------AQUA THEME END---------------------------------------------- */
+
+/* --------------------------------------------------------------PURPLE THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Purple_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Purple_Theme"]:root {
+    --bs-primary: #763ebd;
+    --bs-primary-rgb: 118, 62, 189;
+    --bs-light-primary: rgba(118, 62, 189, 0.1);
+    --bs-primary-bg-subtle: rgba(118, 62, 189, 0.1);
+    --bs-secondary: #95cfd5;
+    --bs-secondary-rgb: 149, 207, 213;
+    --bs-light-secondary: rgba(149, 207, 213, 0.1);
+    --bs-secondary-bg-subtle: rgba(149, 207, 213, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Purple_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Purple_Theme"]:root .btn-primary {
+    --bs-btn-bg: #763ebd;
+    --bs-btn-border-color: #763ebd;
+    --bs-btn-hover-bg: #6435a1;
+    --bs-btn-hover-border-color: #6435a1;
+}
+[data-bs-theme="dark"][data-color-theme="Purple_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Purple_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #95cfd5;
+    --bs-btn-border-color: #95cfd5;
+    --bs-btn-hover-bg: #7fb0b5;
+    --bs-btn-hover-border-color: #7fb0b5;
+}
+/* --------------------------------------------------------------PURPLE THEME END---------------------------------------------- */
+
+/* --------------------------------------------------------------GREEN THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Green_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Green_Theme"]:root {
+    --bs-primary: #0a7ea4;
+    --bs-primary-rgb: 10, 126, 164;
+    --bs-light-primary: rgba(10, 126, 164, 0.1);
+    --bs-primary-bg-subtle: rgba(10, 126, 164, 0.1);
+    --bs-secondary: #ccda4e;
+    --bs-secondary-rgb: 204, 218, 78;
+    --bs-light-secondary: rgba(204, 218, 78, 0.1);
+    --bs-secondary-bg-subtle: rgba(204, 218, 78, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Green_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Green_Theme"]:root .btn-primary {
+    --bs-btn-bg: #0a7ea4;
+    --bs-btn-border-color: #0a7ea4;
+    --bs-btn-hover-bg: #096b8b;
+    --bs-btn-hover-border-color: #096b8b;
+}
+[data-bs-theme="dark"][data-color-theme="Green_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Green_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #ccda4e;
+    --bs-btn-border-color: #ccda4e;
+    --bs-btn-hover-bg: #d4e069;
+    --bs-btn-hover-border-color: #d4e069;
+}
+/* --------------------------------------------------------------GREEN THEME END---------------------------------------------- */
+
+/* --------------------------------------------------------------CYAN THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Cyan_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Cyan_Theme"]:root {
+    --bs-primary: #01c0c8;
+    --bs-primary-rgb: 1, 192, 200;
+    --bs-light-primary: rgba(1, 192, 200, 0.1);
+    --bs-primary-bg-subtle: rgba(1, 192, 200, 0.1);
+    --bs-secondary: #fb9678;
+    --bs-secondary-rgb: 251, 150, 120;
+    --bs-light-secondary: rgba(251, 150, 120, 0.1);
+    --bs-secondary-bg-subtle: rgba(251, 150, 120, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Cyan_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Cyan_Theme"]:root .btn-primary {
+    --bs-btn-bg: #01c0c8;
+    --bs-btn-border-color: #01c0c8;
+    --bs-btn-hover-bg: #01a3aa;
+    --bs-btn-hover-border-color: #01a3aa;
+}
+[data-bs-theme="dark"][data-color-theme="Cyan_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Cyan_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #fb9678;
+    --bs-btn-border-color: #fb9678;
+    --bs-btn-hover-bg: #d58066;
+    --bs-btn-hover-border-color: #d58066;
+}
+/* --------------------------------------------------------------CYAN THEME END---------------------------------------------- */
+
+/* --------------------------------------------------------------ORANGE THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Orange_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Orange_Theme"]:root {
+    --bs-primary: #fa896b;
+    --bs-primary-rgb: 250, 137, 107;
+    --bs-light-primary: rgba(250, 137, 107, 0.1);
+    --bs-primary-bg-subtle: rgba(250, 137, 107, 0.1);
+    --bs-secondary: #0074ba;
+    --bs-secondary-rgb: 0, 116, 186;
+    --bs-light-secondary: rgba(0, 116, 186, 0.1);
+    --bs-secondary-bg-subtle: rgba(0, 116, 186, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Orange_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Orange_Theme"]:root .btn-primary {
+    --bs-btn-bg: #fa896b;
+    --bs-btn-border-color: #fa896b;
+    --bs-btn-hover-bg: #d5745b;
+    --bs-btn-hover-border-color: #d5745b;
+}
+[data-bs-theme="dark"][data-color-theme="Orange_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Orange_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #0074ba;
+    --bs-btn-border-color: #0074ba;
+    --bs-btn-hover-bg: #00639e;
+    --bs-btn-hover-border-color: #00639e;
+} 
+/* --------------------------------------------------------------ORANGE THEME END---------------------------------------------- */
+/* --------------------------------------------------------------DARK GREEN THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Dark_Green_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Dark_Green_Theme"]:root {
+    --bs-primary: #0f9b0f;
+    --bs-primary-rgb: 250, 137, 107;
+    --bs-light-primary: rgba(250, 137, 107, 0.1);
+    --bs-primary-bg-subtle: rgba(250, 137, 107, 0.1);
+    --bs-secondary: #0074ba;
+    --bs-secondary-rgb: 0, 116, 186;
+    --bs-light-secondary: rgba(0, 116, 186, 0.1);
+    --bs-secondary-bg-subtle: rgba(0, 116, 186, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Dark_Green_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Dark_Green_Theme"]:root .btn-primary {
+    --bs-btn-bg: #0f9b0f;
+    --bs-btn-border-color: #0f9b0f;
+    --bs-btn-hover-bg: #054605;
+    --bs-btn-hover-border-color: #054605;
+}
+[data-bs-theme="dark"][data-color-theme="Dark_Green_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Dark_Green_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #0074ba;
+    --bs-btn-border-color: #0074ba;
+    --bs-btn-hover-bg: #00639e;
+    --bs-btn-hover-border-color: #00639e;
+} 
+/* --------------------------------------------------------------DARK GREEN THEME END---------------------------------------------- */
+
+/* -------------------------------------------------------------LIGHT GREEN THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Light_Green_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Light_Green_Theme"]:root {
+    --bs-primary: #6be585;
+    --bs-primary-rgb: 250, 137, 107;
+    --bs-light-primary: rgba(250, 137, 107, 0.1);
+    --bs-primary-bg-subtle: rgba(250, 137, 107, 0.1);
+    --bs-secondary: #dd3e54;
+    --bs-secondary-rgb: 0, 116, 186;
+    --bs-light-secondary: rgba(0, 116, 186, 0.1);
+    --bs-secondary-bg-subtle: rgba(0, 116, 186, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Light_Green_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Light_Green_Theme"]:root .btn-primary {
+    --bs-btn-bg: #6be585;
+    --bs-btn-border-color: #6be585;
+    --bs-btn-hover-bg: #3ec43e;
+    --bs-btn-hover-border-color: #3ec43e;
+}
+[data-bs-theme="dark"][data-color-theme="Light_Green_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Light_Green_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #dd3e54;
+    --bs-btn-border-color: #dd3e54;
+    --bs-btn-hover-bg: #a00b1f;
+    --bs-btn-hover-border-color: #a00b1f;
+} 
+/* --------------------------------------------------------------LIGHT GREEN THEME END---------------------------------------------- */
+
+/* --------------------------------------------------------------BROWN THEME START---------------------------------------------- */
+[data-bs-theme="dark"][data-color-theme="Brown_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Brown_Theme"]:root {
+    --bs-primary: #411a04;
+    --bs-primary-rgb: 250, 137, 107;
+    --bs-light-primary: rgba(250, 137, 107, 0.1);
+    --bs-primary-bg-subtle: rgba(250, 137, 107, 0.1);
+    --bs-secondary: #21a6e4;
+    --bs-secondary-rgb: 0, 116, 186;
+    --bs-light-secondary: rgba(0, 116, 186, 0.1);
+    --bs-secondary-bg-subtle: rgba(0, 116, 186, 0.1);
+}
+[data-bs-theme="dark"][data-color-theme="Brown_Theme"]:root .btn-primary,
+[data-bs-theme="light"][data-color-theme="Brown_Theme"]:root .btn-primary {
+    --bs-btn-bg: #411a04;
+    --bs-btn-border-color: #411a04;
+    --bs-btn-hover-bg: #351402;
+    --bs-btn-hover-border-color: #351402;
+}
+[data-bs-theme="dark"][data-color-theme="Brown_Theme"]:root .btn-secondary,
+[data-bs-theme="light"][data-color-theme="Brown_Theme"]:root .btn-secondary {
+    --bs-btn-bg: #21a6e4;
+    --bs-btn-border-color: #21a6e4;
+    --bs-btn-hover-bg: #0d71a0;
+    --bs-btn-hover-border-color: #0d71a0;
+} 
+/* --------------------------------------------------------------BROWN THEME END---------------------------------------------- */
