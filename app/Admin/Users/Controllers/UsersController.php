@@ -4,6 +4,7 @@ namespace App\Admin\Users\Controllers;
 
 use App\Admin\Clients\Models\Client;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendClientDetails;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,7 +68,7 @@ class UsersController extends Controller
             ]);
             $user->assignRole([$role]);
 
-            // SendClientDetails::dispatch($user, $password);
+            SendClientDetails::dispatch($user, $password);
 
             return response()->json([
                 'status' => '1',

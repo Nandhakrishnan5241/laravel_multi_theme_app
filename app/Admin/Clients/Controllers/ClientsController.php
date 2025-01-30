@@ -5,6 +5,7 @@ namespace App\Admin\Clients\Controllers;
 use App\Admin\Clients\Models\Client;
 use App\Admin\Modules\Models\Module;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendClientDetails;
 use App\Models\Timezone;
 use App\Models\User;
 use App\Services\ClientService;
@@ -163,7 +164,7 @@ class ClientsController extends Controller
 
                     $user->assignRole([$role]);
 
-                    // SendClientDetails::dispatch($user, $password);
+                    SendClientDetails::dispatch($user, $password);
                 } catch (ValidationException $e) {
                     $errors      = $e->validator->errors();
                     $allMessages = $errors->all();
