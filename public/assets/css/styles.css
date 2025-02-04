@@ -15160,6 +15160,10 @@ img,
 svg {
     vertical-align: middle;
 }
+img.logo {
+    vertical-align: middle;
+    width : 200px;
+}
 table {
     caption-side: bottom;
     border-collapse: collapse;
@@ -44357,4 +44361,123 @@ body .connect-sorting-content {
     100% {
         transform: translate3d(0, 0, 0);
     }
+}
+
+/* ------------------------------input type checkbox------------------------------------ */
+/* ------------------------------input type checkbox BLUE THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Blue_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Blue_Theme"]:root {
+    --checkbox-bg: #5d87ff;  /* DEFAULT BLUE*/
+    --checkbox-border: #5d87ff;
+    --checkbox-checked-bg: #4f73d9; 
+    --checkbox-checked-border: #4f73d9;
+}
+
+/* ------------------------------input type checkbox AQUA THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Aqua_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Aqua_Theme"]:root {
+    --checkbox-bg: #0074ba; 
+    --checkbox-border: #0074ba;
+    --checkbox-checked-bg: #0074ba; 
+    --checkbox-checked-border: #0074bf;
+}
+
+/* ------------------------------input type checkbox PURPLE THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Purple_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Purple_Theme"]:root {
+    --checkbox-bg: #763ebd; 
+    --checkbox-border: #763ebd;
+    --checkbox-checked-bg: #763ebd; 
+    --checkbox-checked-border: #763ebd;
+}
+/* ------------------------------input type checkbox PURPLE THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Purple_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Purple_Theme"]:root {
+    --checkbox-bg: #763ebd; 
+    --checkbox-border: #763ebd;
+    --checkbox-checked-bg: #763ebd; 
+    --checkbox-checked-border: #763ebd;
+}
+/* ------------------------------input type checkbox PURPLE THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Purple_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Purple_Theme"]:root {
+    --checkbox-bg: #763ebd; 
+    --checkbox-border: #763ebd;
+    --checkbox-checked-bg: #763ebd; 
+    --checkbox-checked-border: #763ebd;
+}
+/* ------------------------------input type checkbox GREEN THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Green_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Green_Theme"]:root {
+    --checkbox-bg: #0a7ea4; 
+    --checkbox-border: #0a7ea4;
+    --checkbox-checked-bg: #0a7ea4; 
+    --checkbox-checked-border: #0a7ea4;
+}
+/* ------------------------------input type checkbox CYAN THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Cyan_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Cyan_Theme"]:root {
+    --checkbox-bg: #01c0c8; 
+    --checkbox-border: #01c0c8;
+    --checkbox-checked-bg: #01c0c8; 
+    --checkbox-checked-border: #01c0c8;
+}
+/* ------------------------------input type checkbox ORANGE THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Orange_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Orange_Theme"]:root {
+    --checkbox-bg: #fa896b; 
+    --checkbox-border: #fa896b;
+    --checkbox-checked-bg: #fa896b; 
+    --checkbox-checked-border: #fa896b;
+}
+/* ------------------------------input type checkbox DARK GREEN THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Dark_Green_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Dark_Green_Theme"]:root {
+    --checkbox-bg: #0f9b0f; 
+    --checkbox-border: #0f9b0f;
+    --checkbox-checked-bg: #0f9b0f; 
+    --checkbox-checked-border: #0f9b0f;
+}
+/* ------------------------------input type checkbox LIGHT GREEN THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Light_Green_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Light_Green_Theme"]:root {
+    --checkbox-bg: #63ff63; 
+    --checkbox-border: #63ff63;
+    --checkbox-checked-bg: #63ff63; 
+    --checkbox-checked-border: #63ff63;
+}
+/* ------------------------------input type checkbox Brown Theme THEME------------------------------------ */
+[data-bs-theme="dark"][data-color-theme="Brown_Theme"]:root,
+[data-bs-theme="light"][data-color-theme="Brown_Theme"]:root {
+    --checkbox-bg: #411a04; 
+    --checkbox-border: #411a04;
+    --checkbox-checked-bg: #411a04; 
+    --checkbox-checked-border: #411a04;
+}
+
+.permission-checkbox {
+    appearance: none; /* Hide default checkbox */
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--checkbox-border);
+    border-radius: 4px;
+    background-color: transparent;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+.permission-checkbox:checked {
+    background-color: var(--checkbox-checked-bg);
+    border-color: var(--checkbox-checked-border);
+}
+
+.permission-checkbox:checked::after {
+    content: "✔"; /* Checkmark */
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

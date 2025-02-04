@@ -20,47 +20,47 @@
 @vite(['resources/js/users.js'])
 
 @section('content')
-
-    <div class="mt-4 h4">Manage Users
-        @if (auth()->user()->can('users.create') || auth()->user()->hasRole('superadmin'))
-            <button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add User</button>
-        @endif
-    </div>
-    <hr>
-    <div class="row mt-3">
-        <div class="col-4">
-            @if (auth()->user()->hasRole('superadmin'))
-                <label for="client">Client</label>
-                <select class="form-select" name="client" id="client" onchange="getSelectedClient(this)">
-                    <option value="" disabled selected>Select a client</option>
-                    @foreach ($clients as $key => $value)
-                        <option value="{{ $value['id'] }}">{{ $value['company_name'] }}</option>
-                    @endforeach
-                </select>
-                <div id="client-error" class="mx-2" style="color: red; display: none;">Please select a client</div>
+    <div class="container-fluid">
+        <div class="mt-4 h4">Manage Users
+            @if (auth()->user()->can('users.create') || auth()->user()->hasRole('superadmin'))
+                <button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add User</button>
             @endif
         </div>
+        <hr>
+        <div class="row mt-3">
+            <div class="col-4">
+                @if (auth()->user()->hasRole('superadmin'))
+                    <label for="client">Client</label>
+                    <select class="form-select" name="client" id="client" onchange="getSelectedClient(this)">
+                        <option value="" disabled selected>Select a client</option>
+                        @foreach ($clients as $key => $value)
+                            <option value="{{ $value['id'] }}">{{ $value['company_name'] }}</option>
+                        @endforeach
+                    </select>
+                    <div id="client-error" class="mx-2" style="color: red; display: none;">Please select a client</div>
+                @endif
+            </div>
 
 
-        {{-- <div class="table-responsive"> --}}
-        <div class="row mt-4">
-            <table id="usersTable" class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data will be populated by DataTables -->
-                </tbody>
-            </table>
+            {{-- <div class="table-responsive"> --}}
+            <div class="row mt-4">
+                <table id="usersTable" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be populated by DataTables -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    {{-- </div> --}}
 
     {{-- ADD --}}
 

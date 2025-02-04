@@ -1,13 +1,15 @@
  @php
      $user = Auth::user();
+     $displayName = $user->display_name;
      $client = \App\Admin\Clients\Models\Client::with('modules')->find($user->client_id);
+     $companyLogo = $client->company_logo;
+     $name = $client->company_name;
      $modules = $client ? $client->modules : collect();
 
      $modules = json_decode(json_encode($modules), true);
-     $modulesList = [];
-     foreach ($modules as $module) {
-         array_push($modulesList, $module['slug']);
-     }
+     usort($modules, function ($a, $b) {
+         return $a['order'] <=> $b['order']; 
+     });
 
  @endphp
  <!-- Sidebar Start -->
@@ -16,9 +18,10 @@
          <!-- Start Vertical Layout Sidebar -->
          <!-- ---------------------------------- -->
          <div class="brand-logo d-flex align-items-center justify-content-between">
-             <a href="../main/index.html" class="text-nowrap logo-img">
-                 <img src="../assets/images/logos/dark-logo.svg" class="dark-logo" alt="Logo-Dark" />
-                 <img src="../assets/images/logos/light-logo.svg" class="light-logo" alt="Logo-light" />
+             <a href="{{ url('bsadmin/dashboard') }}" class="text-nowrap logo-img">
+                 <img src="{{ $companyLogo }}" class="dark-logo logo" alt="Logo-Dark" />
+                 <img src="{{ $companyLogo }}" class="light-logo logo" alt="Logo-light" />
+                 
              </a>
              <a href="javascript:void(0)" class="sidebartoggler ms-auto text-decoration-none fs-5 d-block d-xl-none">
                  <i class="ti ti-x"></i>
@@ -33,8 +36,7 @@
                      <span class="hide-menu">Home</span>
                  </li>
                  <li class="sidebar-item">
-                     <a class="sidebar-link" aria-expanded="false"
-                         href="{{ url('bsadmin/dashboard') }}">
+                     <a class="sidebar-link" aria-expanded="false" href="{{ url('bsadmin/dashboard') }}">
                          <span>
                              {{-- <i class="ti ti-aperture"></i> --}}
                              <i class="fa-solid fa-house"></i>
@@ -44,18 +46,18 @@
                  </li>
 
                  @foreach ($modules as $module)
-                    @if (auth()->user()->can($module['slug'] . '.view') || auth()->user()->hasRole('superadmin'))
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" aria-expanded="false"
-                                href="{{ url('bsadmin/' . $module['url']) }}">
-                                <span>
-                                    {{-- <i class="ti ti-aperture"></i> --}}
-                                    <i class="{{$module['icon']}}"></i>
-                                </span>
-                                <span class="hide-menu">{{ $module['name'] }}</span>
-                            </a>
-                        </li>
-                    @endif
+                     @if (auth()->user()->can($module['slug'] . '.view') || auth()->user()->hasRole('superadmin'))
+                         <li class="sidebar-item">
+                             <a class="sidebar-link" aria-expanded="false"
+                                 href="{{ url('bsadmin/' . $module['url']) }}">
+                                 <span>
+                                     {{-- <i class="ti ti-aperture"></i> --}}
+                                     <i class="{{ $module['icon'] }}"></i>
+                                 </span>
+                                 <span class="hide-menu">{{ $module['name'] }}</span>
+                             </a>
+                         </li>
+                     @endif
                  @endforeach
              </ul>
          </nav>
@@ -67,19 +69,16 @@
                          alt="modernize-img" />
                  </div>
                  <div class="john-title">
-                     <h6 class="mb-0 fs-4 fw-semibold">Nandhu</h6>
-                     <span class="fs-2">Developer</span>
+                     <h6 class="mb-0 fs-4 fw-semibold">{{ $displayName }}</h6>
+                     {{-- <span class="fs-2">Developer</span> --}}
                  </div>
-                 <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button"
+                 {{-- <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button"
                      aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                     
                      <i class="ti ti-power fs-6"></i>
-                 </button>
+                 </button> --}}
              </div>
          </div>
-
-         <!-- ---------------------------------- -->
-         <!-- Start Vertical Layout Sidebar -->
-         <!-- ---------------------------------- -->
      </div>
  </aside>
  <!--  Sidebar End -->

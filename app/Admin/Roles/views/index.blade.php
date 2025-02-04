@@ -19,16 +19,16 @@
 @vite(['resources/js/roles.js'])
 
 @section('content')
+    <div class="container-fluid">
+        <div class="mt-4 h4">Manage Roles
+            @if (auth()->user()->can('roles.create') || auth()->user()->hasRole('superadmin'))
+                <button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add Roles</button>
+            @endif
+        </div>
+        <hr>
 
-    <div class="mt-4 h4">Manage Roles
-        @if (auth()->user()->can('roles.create') || (auth()->user()->hasRole('superadmin')))
-            <button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add Roles</button>
-        @endif
-    </div>
-    <hr>
-
-    {{-- <div class="table-responsive"> --}}
+        {{-- <div class="table-responsive"> --}}
         <table id="rolesTable" class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -40,7 +40,7 @@
                 <!-- Data will be populated by DataTables -->
             </tbody>
         </table>
-    {{-- </div> --}}
+    </div>
     {{-- ADD --}}
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
@@ -55,11 +55,12 @@
 
                 <div class="mb-3">
                     <label for="name">Role Name</label>
-                    <input class="form-control" name="name" type="text" placeholder="Enter the permission name" id="name" />
+                    <input class="form-control" name="name" type="text" placeholder="Enter the permission name"
+                        id="name" />
                 </div>
                 <div class="mt-4 mb-0">
-                    <button class="btn btn-primary float-end" type="submit">Save</button>                 
-                </div>        
+                    <button class="btn btn-primary float-end" type="submit">Save</button>
+                </div>
             </form>
 
         </div>
@@ -82,8 +83,8 @@
                         id="editName" />
                 </div>
                 <div class="mt-4 mb-0">
-                    <button class="btn btn-primary float-end" type="submit">Update</button>                 
-                </div>        
+                    <button class="btn btn-primary float-end" type="submit">Update</button>
+                </div>
             </form>
 
         </div>

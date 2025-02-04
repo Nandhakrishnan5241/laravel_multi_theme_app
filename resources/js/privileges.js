@@ -144,7 +144,7 @@ function updateTable(data){
         const rowHTML = `
             <td>${index + 1}</td>
             <td>${module.name}</td>
-            <td><input type="checkbox" class="all-checkbox" data-row="${index}" data-module="${escapedModule}" data-action="all"></td>
+            <td><input type="checkbox" class="all-checkbox permission-checkbox" data-row="${index}" data-module="${escapedModule}" data-action="all"></td>
             <td><input type="checkbox" class="row-checkbox permission-checkbox" data-row="${index}" data-module="${escapedModule}" data-action="create" ${permissions.includes(moduleSlug + '.create') ? 'checked' : ''}></td>
             <td><input type="checkbox" class="row-checkbox permission-checkbox" data-row="${index}" data-module="${escapedModule}" data-action="view" ${permissions.includes(moduleSlug + '.view') ? 'checked' : ''}></td>
             <td><input type="checkbox" class="row-checkbox permission-checkbox" data-row="${index}" data-module="${escapedModule}" data-action="edit" ${permissions.includes(moduleSlug + '.edit') ? 'checked' : ''}></td>

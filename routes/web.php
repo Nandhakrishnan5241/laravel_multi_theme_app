@@ -1,18 +1,17 @@
 <?php
 
+use App\Admin\Modules\Models\Module;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
-
-
 Route::get('/', function () {
     return redirect('bsadmin/dashboard');
     return view('admin.dashboard');
 })->middleware(['auth', 'verified']);
 
 Route::get('bsadmin/dashboard', function () {
-    return view('admin.dashboard');
+    $modules   = Module::where('dashboard', 1)->get();
+    return view('admin.dashboard',compact('modules'));
 })->middleware(['auth', 'verified'])->name('bsadmin.dashboard');
 
 Route::middleware('auth')->group(function () {

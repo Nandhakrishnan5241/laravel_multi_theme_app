@@ -21,7 +21,7 @@ Route::middleware('guest')->group(function () {
         return redirect('bsadmin/login');
     })->name('login');
         
-    // bs admin get
+    // bs admin login get
     Route::get('bsadmin/login', [AuthenticatedSessionController::class, 'create'])
         ->name('bsadmin.login');
 
@@ -29,6 +29,7 @@ Route::middleware('guest')->group(function () {
     Route::post('bsadmin/login', [AuthenticatedSessionController::class, 'store']);
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
+    // bs 
     Route::post('bsadmin/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('bsadmin.logout');
     
@@ -65,5 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
+    ->name('logout');
+
+    Route::post('bsadmin/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('bsadmin.logout');
 });

@@ -43,31 +43,32 @@
 @vite(['resources/js/clients.js'])
 
 @section('content')
+    <div class="container-fluid">
 
-    <div class="mt-4 h4">Manage Clients
-        @if (auth()->user()->can('clients.create') || auth()->user()->hasRole('superadmin'))
-            <button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add Client</button>
-        @endif
+        <div class="mt-4 h4">Manage Clients
+            @if (auth()->user()->can('clients.create') || auth()->user()->hasRole('superadmin'))
+                <button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add Client</button>
+            @endif
+        </div>
+        <hr>
+
+        {{-- <div class="table-responsive"> --}}
+        <table id="clientsTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Company Logo</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated by DataTables -->
+            </tbody>
+        </table>
     </div>
-    <hr>
-
-    {{-- <div class="table-responsive"> --}}
-    <table id="clientsTable" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Company Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
-                <th>Company Logo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data will be populated by DataTables -->
-        </tbody>
-    </table>
-    {{-- </div> --}}
 
     {{-- ADD --}}
 
@@ -125,10 +126,10 @@
                         <label for="timezone">Timezone</label>
                         <select class="form-select" name="timezone" id="timezone">
                             <option value="" disabled selected>Select a timezone</option>
-                             @foreach ($timezones as $key => $timezone)
+                            @foreach ($timezones as $key => $timezone)
                                 <option value="{{ $timezone['id'] }}">{{ $timezone['name'] }}</option>
                             @endforeach
-                            
+
                         </select>
                     </div>
 
@@ -239,10 +240,10 @@
                         <label for="editTimezone">Timezone</label>
                         <select class="form-select" name="editTimezone" id="editTimezone">
                             <option value="" disabled selected>Select a timezone</option>
-                             @foreach ($timezones as $key => $timezone)
+                            @foreach ($timezones as $key => $timezone)
                                 <option value="{{ $timezone['id'] }}">{{ $timezone['name'] }}</option>
                             @endforeach
-                            
+
                         </select>
                     </div>
 
@@ -259,9 +260,9 @@
                         <input class="form-control" name="editPhone" type="tel" placeholder="Enter the phone"
                             id="editPhone" />
                     </div>
-                     <!-- Hidden fields for phone number and country code -->
-                     <input type="hidden" id="edit_phone_number" name="edit_phone_number">
-                     <input type="hidden" id="edit_country_code" name="edit_country_code">
+                    <!-- Hidden fields for phone number and country code -->
+                    <input type="hidden" id="edit_phone_number" name="edit_phone_number">
+                    <input type="hidden" id="edit_country_code" name="edit_country_code">
 
                     <div class="col-6 mb-3">
                         <label for="editLogo">Company Logo</label>

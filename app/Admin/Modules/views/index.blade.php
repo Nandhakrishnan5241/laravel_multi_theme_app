@@ -4,31 +4,31 @@
 
 @vite(['resources/js/module.js'])
 @section('content')
+    <div class="container-fluid">
+        <div class="mt-4 h4">Manage Modules
+            @if (auth()->user()->can('modules.create') || auth()->user()->hasRole('superadmin'))
+                <button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add Module</button>
+            @endif
+        </div>
+        <hr>
 
-    <div class="mt-4 h4">Manage Modules
-        @if (auth()->user()->can('modules.create') || auth()->user()->hasRole('superadmin'))
-            <button class="btn btn-primary float-end me-2" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Add Module</button>
-        @endif
+        {{-- <div class="table-responsive"> --}}
+        <table id="modulesTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Order</th>
+                    <th>Dashboard</th>
+                    <th>Active</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated by DataTables -->
+            </tbody>
+        </table>
     </div>
-    <hr>
-
-    {{-- <div class="table-responsive"> --}}
-    <table id="modulesTable" class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Order</th>
-                <th>Dashboard</th>
-                <th>Active</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data will be populated by DataTables -->
-        </tbody>
-    </table>
-    {{-- </div> --}}
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
         style="width: 50%">
