@@ -81,11 +81,11 @@ class ClientsController extends Controller
         try {
             $selectedModulesId   = $request->input('modules', []);
             $request->validate([
-                'name' => ['required', 'string', 'max:255', 'unique:' . Client::class . ',company_name'],
-                'email' => ['required', 'lowercase', 'email', 'max:255', 'unique:' . Client::class],
-                'phone' => 'required',
-                'address' => 'required',
-                'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'name'     => ['required', 'string', 'max:255', 'unique:' . Client::class . ',company_name'],
+                'email'    => ['required', 'lowercase', 'email', 'max:255', 'unique:' . Client::class],
+                'phone'    => 'required',
+                'address'  => 'required',
+                'logo'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
             $imageName = time() . '.' . $request->logo->extension();
             $imagePath = 'images/clients/';
@@ -131,7 +131,9 @@ class ClientsController extends Controller
 
             $clientID      = $client->id;
             $role          = 'admin';
+            
 
+            // validate client_id 
             if ($clientID) {
                 try {
                     $request->validate([

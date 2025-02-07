@@ -14,20 +14,12 @@ class ModuleSeeder extends Seeder
     public function run(): void
     {
         Module::firstOrCreate([
-            'name' => 'Admin',
-            'slug' => 'admin',
-            'icon' => 'fa-solid fa-user-secret',
-            'url'  => 'admin',
-            'tab'  => 'administration',
-            'order' => 1
-        ]);
-        Module::firstOrCreate([
             'name' => 'Modules',
             'slug' => 'modules',
             'icon' => 'fa-solid fa-bars',
-            'url'  => 'module',
+            'url'  => 'modules',
             'tab'  => 'administration',
-            'order' => 2
+            'order' => 1
         ]);
         Module::firstOrCreate([
             'name' => 'Roles',
@@ -35,7 +27,7 @@ class ModuleSeeder extends Seeder
             'icon' => 'fa-solid fa-user-gear',
             'url'  => 'roles',
             'tab'  => 'administration',
-            'order' => 3
+            'order' => 2
         ]);
         Module::firstOrCreate([
             'name' => 'Permissions',
@@ -43,7 +35,7 @@ class ModuleSeeder extends Seeder
             'icon' => 'fa-solid fa-shield-halved',
             'url'  => 'permissions',
             'tab'  => 'administration',
-            'order' => 4
+            'order' => 3
         ]);
         Module::firstOrCreate([
             'name' => 'Privileges',
@@ -51,7 +43,7 @@ class ModuleSeeder extends Seeder
             'icon' => 'fa-solid fa-user-shield',
             'url'  => 'privileges',
             'tab'  => 'administration',
-            'order' => 5
+            'order' => 4
         ]);
         
         Module::firstOrCreate([
@@ -60,7 +52,7 @@ class ModuleSeeder extends Seeder
             'icon' => 'fa-solid fa-users',
             'url'  => 'users',
             'tab'  => 'administration',
-            'order' => 6,
+            'order' => 5,
         ]);
         Module::firstOrCreate([
             'name' => 'Clients',
@@ -68,15 +60,31 @@ class ModuleSeeder extends Seeder
             'icon' => 'fa-solid fa-users-rectangle',
             'url'  => 'clients',
             'tab'  => 'administration',
-            'order' => 7,
+            'order' => 6,
         ]);
         Module::firstOrCreate([
-            'name' => 'categories',
+            'name' => 'Category',
             'slug' => 'categories',
             'icon' => 'fa-solid fa-cart-shopping',
             'url'  => 'categories',
             'tab'  => 'outer',
+            'order' => 7
+        ]);
+        Module::firstOrCreate([
+            'name' => 'Sub Category',
+            'slug' => 'subcategory',
+            'icon' => 'fa-solid fa-layer-group',
+            'url'  => 'subcategory',
+            'tab'  => 'outer',
             'order' => 8
+        ]);
+        Module::firstOrCreate([
+            'name' => 'Products',
+            'slug' => 'products',
+            'icon' => 'fa-solid fa-basket-shopping',
+            'url'  => 'products',
+            'tab'  => 'outer',
+            'order' => 9
         ]);
 
         echo "data inserted successfully...";

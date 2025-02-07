@@ -5,8 +5,11 @@ use App\Admin\Clients\Controllers\ClientsController;
 use App\Admin\Modules\Controllers\ModulesController;
 use App\Admin\Permissions\Controllers\PermissionsController;
 use App\Admin\Privileges\Controllers\PrivilegesController;
+
 use App\Admin\Roles\Controllers\RolesController;
 use App\Admin\Users\Controllers\UsersController;
+use App\Admin\Products\Controllers\ProductsController;
+use App\Admin\Subcategory\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('bsadmin/modules')->middleware('auth')->group(function () {
@@ -83,9 +86,24 @@ Route::prefix('bsadmin/categories')->middleware('auth')->group(function(){
     Route::post('/image', [CategoryController::class, 'imageUpload'])->name('categories.image');
 });
 
-
-Route::get('/test',function(){
-    dd('test');
+Route::prefix('bsadmin/products')->middleware('auth')->group(function(){
+    Route::get('/', [ProductsController::class, 'index'])->middleware('check.permission:products.view');
+    Route::get('/getdetails', [ProductsController::class, 'getDetails'])->name('products.getdetails');
+    Route::get('/add', [ProductsController::class, 'add'])->name('products.add');
+    Route::get('{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+    Route::get('/delete/{id}', [ProductsController::class, 'delete'])->name('products.delete');
+    Route::post('/save', [ProductsController::class, 'save'])->name('products.save');
+    Route::post('/update', [ProductsController::class, 'update'])->name('products.update');
+    Route::post('/image', [ProductsController::class, 'imageUpload'])->name('products.image');
+});
+Route::prefix('bsadmin/subcategory')->middleware('auth')->group(function(){
+    Route::get('/', [SubcategoryController::class, 'index'])->middleware('check.permission:subcategory.view');
+    Route::get('/getdetails', [SubcategoryController::class, 'getDetails'])->name('subcategory.getdetails');
+    Route::get('/add', [SubcategoryController::class, 'add'])->name('subcategory.add');
+    Route::get('{id}/edit', [SubcategoryController::class, 'edit'])->name('subcategory.edit');
+    Route::get('/delete/{id}', [SubcategoryController::class, 'delete'])->name('subcategory.delete');
+    Route::post('/save', [SubcategoryController::class, 'save'])->name('subcategory.save');
+    Route::post('/update', [SubcategoryController::class, 'update'])->name('subcategory.update');
 });
 
 Route::fallback(function () {

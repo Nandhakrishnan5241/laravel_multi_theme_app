@@ -58,7 +58,7 @@
                         Forgot your password?
                     </a>
                 @endif
-                <button type="submit" class="btn btn-dark">Log In</button>
+                <button type="submit" class="btn btn-primary">Log In</button>
             </div>
             <div class="mt-2">
                 @error('email')

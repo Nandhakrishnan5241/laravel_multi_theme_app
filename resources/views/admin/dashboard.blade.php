@@ -8,16 +8,16 @@
       @foreach ($modules as $module)
         @if (auth()->user()->can($module['slug'] . '.view') || auth()->user()->hasRole('superadmin'))
         <div class="item">
-          <div class="card border-0 zoom-in bg-primary-subtle shadow-none">
+          <div class="card border-0 zoom-in bg-success-subtle shadow-none">
             <div class="card-body">
               <div class="text-center">
                 <img src="../assets/images/svgs/icon-speech-bubble.svg" width="50" height="50" class="mb-3" alt="modernize-img" />
                 <a href="{{ url('bsadmin/' . $module['url']) }}">
-                  <p class="fw-semibold fs-3 text-primary mb-1">
+                  <b><p class="fw-semibold fs-3 text-dark mb-1"></b>
                     {{$module['name']}}
                   </p>
                 </a>
-                <h5 class="fw-semibold text-primary mb-0">96</h5>
+                {{-- <h5 class="fw-semibold text-primary mb-0">96</h5> --}}
               </div>
             </div>
           </div>

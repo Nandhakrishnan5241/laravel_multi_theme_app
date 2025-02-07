@@ -50,7 +50,15 @@ class PermissionSeeder extends Seeder
                 "categories.create",
                 "categories.view",
                 "categories.edit",
-                "categories.delete"
+                "categories.delete",
+                "subcategory.create",
+                "subcategory.view",
+                "subcategory.edit",
+                "subcategory.delete",
+                "products.create",
+                "products.view",
+                "products.edit",
+                "products.delete"
             ];
             $role       = Role::findOrFail($superAdminID);
 

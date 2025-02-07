@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
@@ -45,9 +46,9 @@ class CategoryController extends Controller
     {
         try {
             $request->validate([
-                'name' => 'required',
+                'name'        => ['required', 'unique:' . Category::class . ',name'],
                 'description' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
             $imageName = time() . '.' . $request->image->extension();
             $imagePath = 'images/category/';
@@ -67,41 +68,52 @@ class CategoryController extends Controller
             $category->save();
 
             return response()->json([
-                'success' => 'Data Saved Successfully...',
-                'imageUrl' => $fullPath, 
+                'status' => '1',
+                'message' => 'Data Saved Successfully...',
+                'data' => [],
             ]);
 
         } catch (ValidationException $e) {
-            return back()->with('failed', "Image Uploaded failed...");
+            $errors      = $e->validator->errors();
+            $allMessages = $errors->all();
+            return response()->json([
+                'status' => '0',
+                'message' => $allMessages[0],
+                'data' => [],
+            ]);
         }       
     }
 
     public function update(Request $request) {
         try {
             $id            = $request->input('id');
-            $name          = $request->input('name');
-            $description   = $request->input('description');
-            $image         = $request->input('image');
+            $name          = $request->input('editName');
+            $description   = $request->input('editDescription');
+            $currentImage  = $request->input('currentImage');
 
             $request->validate([
                 'id'          => 'required',
-                'name'        => 'required',
-                'description' => 'required',
+                'editName' => [
+                    'required',
+                    'string',
+                    Rule::unique('categories', 'name')
+                        ->where('id', $id)
+                        ->ignore($id),
+                ],
+                'editDescription' => 'required',
             ]);
 
-            if(gettype($image) != 'string'){
+            if (!empty($request->editImage)) {
                 $request->validate([
-                    'image'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    'editImage'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 ]);
-                $imageName = time() . '.' . $request->image->extension();
+                $imageName = time() . '.' . $request->editImage->extension();
                 $imagePath = 'images/category/';
                 $fullPath  = $imagePath . $imageName;
-
-                $request->image->move(public_path($imagePath), $imageName);
-                $fullPath      = '../../'.$fullPath;
-            }
-            else{
-                $fullPath = $image;
+                $request->editImage->move(public_path($imagePath), $imageName);
+                $fullPath    = '../../' . $fullPath;
+            } else {
+                $fullPath    = $currentImage;
             }
 
             $category                = Category::find($id);
@@ -109,14 +121,21 @@ class CategoryController extends Controller
             $category->description   = $description;
             $category->image         = $fullPath;
             $category->save();
+
             return response()->json([
-                'success' => 'Data Updated Successfully...',
-                'imageUrl' => $fullPath, 
+                'status' => '1',
+                'message' => 'Data updated Successfully...',
+                'data' => [],
             ]);
-            
         } catch (ValidationException $e) {
-            return back()->with('failed', "Image Uploaded failed...");
-        }  
+            $errors      = $e->validator->errors();
+            $allMessages = $errors->all();
+            return response()->json([
+                'status' => '0',
+                'message' => $allMessages[0],
+                'data' => [],
+            ]);
+        }
     }
 
     public function imageUpload(Request $request)
@@ -127,7 +146,6 @@ class CategoryController extends Controller
         $imageName = time() . '.' . $request->image->extension();
         $image = $request->file('image');
         $fileName = $image->getClientOriginalName();
-        dd($image, $fileName);
         $request->image->move(public_path('images'), $imageName);
 
 

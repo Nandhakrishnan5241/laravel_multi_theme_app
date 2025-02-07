@@ -24,19 +24,6 @@
     <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap5.min.css') }}">
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables/dataTables.bootstrap5.min.js') }}"></script>
-
-
-    {{-- <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('plugins/jqueryvalidation/jquery.validate.min.js') }}"></script> --}}
-
-    <!-- jQuery (required for validation plugin) -->
-    {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
-
-    <!-- jQuery Validation Plugin -->
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script> --}}
-
-
-    {{-- <link rel="stylesheet" href="../assets/libs/datatables/dataTables.bootstrap5.min.css" /> --}}
     
 
     {{-- SWEET ALERT --}}

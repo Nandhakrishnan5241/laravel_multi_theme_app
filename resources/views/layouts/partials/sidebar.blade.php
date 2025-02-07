@@ -1,10 +1,10 @@
  @php
-     $user = Auth::user();
+     $user        = Auth::user();
      $displayName = $user->display_name;
-     $client = \App\Admin\Clients\Models\Client::with('modules')->find($user->client_id);
+     $client      = \App\Admin\Clients\Models\Client::with('modules')->find($user->client_id);
      $companyLogo = $client->company_logo;
-     $name = $client->company_name;
-     $modules = $client ? $client->modules : collect();
+     $name        = $client->company_name;
+     $modules     = $client ? $client->modules : collect();
 
      $modules = json_decode(json_encode($modules), true);
      usort($modules, function ($a, $b) {
@@ -31,10 +31,10 @@
          <nav class="sidebar-nav scroll-sidebar" data-simplebar>
              <ul id="sidebarnav">
 
-                 <li class="nav-small-cap">
+                 {{-- <li class="nav-small-cap">
                      <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                      <span class="hide-menu">Home</span>
-                 </li>
+                 </li> --}}
                  <li class="sidebar-item">
                      <a class="sidebar-link" aria-expanded="false" href="{{ url('bsadmin/dashboard') }}">
                          <span>

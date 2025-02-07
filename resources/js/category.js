@@ -20,146 +20,239 @@ $(document).ready(function () {
     });
 
     // on submit
-    $('#categoryForm').on('submit', function(e) {
-        e.preventDefault(); 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        
-        let name        = $('#name').val();
-        let description = $('#description').val();
-        let image       = $('#image')[0].files[0];
+    var formValidator = {
+        rules: {
+            name: {
+                required: true,
+            },
+            description: {
+                required: true,
+            },
+            image: {
+                required: true,
+            },
+        },
+        messages: {
+            name: {
+                required: "Name field is required",
+            },
+            description: {
+                required: "description field is required",
+            },
+            image: {
+                required: "image field is required",
+            },
+        },
+        highlight: function (element) {
+            $(element).addClass("validation");
+            $(element).next("span").addClass("validation");
+        },
+        unhighlight: function (element) {
+            $(element).removeClass("validation");
+            $(element).next("span").removeClass("validation");
+        },
+        errorPlacement: function (error, element) {
+            element.attr("placeholder", error.text()).addClass("validation");
+            element.next("span").addClass("validation");
+        },
+        debug: false,
+        submitHandler: function (form) {
+            // form.submit();
+        },
+    };
 
-        let formData = new FormData(); 
+    $("#addCategoryForm").validate(formValidator);
 
-        formData.append('name', name);   
-        formData.append('description', description);
-        formData.append('image', image); 
-     
+    $("#addCategoryForm").on("submit", function (e) {
+        if ($("#addCategoryForm").valid()) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                        "content"
+                    ),
+                },
+            });
 
-        $.ajax({
-            url: $(this).attr('action'), 
-            method: 'POST',
-            data: formData,
-            processData: false, 
-            contentType: false, 
-            success: function(response) {
-                if (response.success) {
-                    $('#successMessage').text(response.success).show();
-                    $('#errorMessage').hide();
-                    $('#imagePreview').attr('src', response.imageUrl);
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: response.success,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    window.location.reload();
-                }
-                else{
+            var formData = new FormData(document.getElementById("addCategoryForm"));
+            $.ajax({
+                url: $(this).attr("action"),
+                method: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.status == 1) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: response.message,
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        $("#addOffcanvasRight").offcanvas("hide");
+                        $('#editImagePreview').hide();
+                        $(".image-container").hide();
+                        document.getElementById("addCategoryForm").reset();
+                        const table = $("#categoryTable").DataTable();
+                        table.clear().draw();
+                        table.destroy();
+
+                        getTableData("initial");
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: response.message,
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    let errors = xhr.responseJSON.errors;
+                    let errorMessage = "";
+
+                    if (errors) {
+                        $.each(errors, function (key, value) {
+                            errorMessage += value[0] + "<br>";
+                        });
+                    }
+
                     Swal.fire({
                         icon: "error",
                         title: "Oops...",
-                        text: 'Something went wrong!',
-                        // footer: '<a href="#">Why do I have this issue?</a>'
+                        text: "Something went wrong!",
+                        footer: '<a href="#">Why do I have this issue?</a>',
                     });
-                }
+                },
+            });
+        }
+    }); 
+
+    // update
+
+    var editFormValidator = {
+        rules: {
+            editName: {
+                required: true,
             },
-            error: function(xhr, status, error) {
-                let errors = xhr.responseJSON.errors;
-                let errorMessage = '';
+            editStock: {
+                required: true,
+            },
+            editPrice: {
+                required: true,
+            },
+            editTax: {
+                required: true,
+            },
+            editDescription: {
+                required: true,
+            },
+        
+        },
+        messages: {
+            editName: {
+                required: "Name field is required",
+            },
+            editStock: {
+                required: "this field is required",
+            },
+            editPrice: {
+                required: "this field is required",
+            },
+            editTax: {
+                required: "this field is required",
+            },
+            editDescription: {
+                required: "this field is required",
+            },
+            
+        },
+        highlight: function (element) {
+            $(element).addClass("validation");
+            $(element).next("span").addClass("validation");
+        },
+        unhighlight: function (element) {
+            $(element).removeClass("validation");
+            $(element).next("span").removeClass("validation");
+        },
+        errorPlacement: function (error, element) {
+            element.attr("placeholder", error.text()).addClass("validation");
+            element.next("span").addClass("validation");
+        },
+        debug: false,
+        submitHandler: function (form) {
+            // form.submit();
+        },
+    };
 
-                if (errors) {
-                    $.each(errors, function(key, value) {
-                        errorMessage += value[0] + '<br>';
-                    });
-                }
-                
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: '<a href="#">Why do I have this issue?</a>'
-                  });
+    $("#editCategoryForm").validate(editFormValidator);
 
-                $('#errorMessage').html(errorMessage).show();
-                $('#successMessage').hide();
-            }
-        });
-    });    
+    $("#editCategoryForm").on("submit", function (e) {
+        if ($("#editCategoryForm").valid()) {
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                },
+            });
+            var formData = new FormData(document.getElementById("editCategoryForm"));
 
-    // edit categories
-    $('#editCategoryForm').on('submit', function(e) {
-        e.preventDefault(); 
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-  
-        let id              = $('#id').val();
-        let editName        = $('#editName').val();
-        let editDescription = $('#editDescription').val();
-        let editImage       = ($('#editImage')[0].files[0] ? $('#editImage')[0].files[0] :  $('#currentImage').val());
+            $.ajax({
+                url: $(this).attr("action"),
+                method: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.status == 1) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: response.message,
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        $("#editOffCanvasRight").offcanvas("hide");
+                        document.getElementById("editCategoryForm").reset();
+                        $('#editImagePreview').hide();
+                        const table = $("#categoryTable").DataTable();
+                        table.clear().draw();
+                        table.destroy();
+                        getTableData("update");
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: response.message,
+                            // footer: '<a href="#">Why do I have this issue?</a>'
+                        });
+                    }
+                },
+                error: function (xhr, status, error) {
+                    let errors = xhr.responseJSON.errors;
+                    let errorMessage = "";
 
-        let formData = new FormData(); 
+                    if (errors) {
+                        $.each(errors, function (key, value) {
+                            errorMessage += value[0] + "<br>";
+                        });
+                    }
 
-        formData.append('id', id);   
-        formData.append('name', editName);   
-        formData.append('description', editDescription);
-        formData.append('image', editImage); 
-     
-        $.ajax({
-            url: $(this).attr('action'), 
-            method: 'POST',
-            data: formData,
-            processData: false, 
-            contentType: false, 
-            success: function(response) {
-                if (response.success) {
-                    $('#successMessage').text(response.success).show();
-                    $('#errorMessage').hide();
-                    $('#imagePreview').attr('src', response.imageUrl);
                     Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: response.success,
-                        showConfirmButton: false,
-                        timer: 1500
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                        footer: '<a href="#">Why do I have this issue?</a>',
                     });
-                    window.location.reload();
-                }
-            },
-            error: function(xhr, status, error) {
-                let errors = xhr.responseJSON.errors;
-                let errorMessage = '';
-
-                if (errors) {
-                    $.each(errors, function(key, value) {
-                        errorMessage += value[0] + '<br>';
-                    });
-                }
-                
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: '<a href="#">Why do I have this issue?</a>'
-                  });
-
-                $('#errorMessage').html(errorMessage).show();
-                $('#successMessage').hide();
-            }
-        });
-    });  
+                },
+            });
+        }
+    });
 });
 
 function getTableData(type) {
-    var table = $('#categories-table').DataTable({
+    var table = $('#categoryTable').DataTable({
         processing: true,
         serverSide: true,
         stateSave: type === 'initial' ? false : true,
@@ -173,8 +266,8 @@ function getTableData(type) {
     });
 
     // Override the default search behavior
-    $('#categories-table_filter input').unbind(); 
-    $('#categories-table_filter input').on('keypress', function (e) {
+    $('#categoryTable_filter input').unbind(); 
+    $('#categoryTable_filter input').on('keypress', function (e) {
         if (e.which === 13) { 
             table.search(this.value).draw(); 
         }
@@ -221,7 +314,7 @@ window.deleteData = function(id) {
                 url: "categories/delete/" + id,
                 data: {
                     id: id,
-                    _token: $('input[name="_token"]').val() // CSRF token
+                    _token: $('input[name="_token"]').val() 
                 },
                 success: function (data) {
                     if (data.status == 200) {
@@ -232,16 +325,12 @@ window.deleteData = function(id) {
                             confirmButtonText: "Ok",
                         }).then(() => {
 
-                            const table = $('#categories-table').DataTable();
+                            const table = $('#categoryTable').DataTable();
                             table.clear().draw();
                             table.destroy();
-
                             getTableData('update');
-                            // window.location.reload();
-
                         });
                     } else {
-                        // Handle unexpected status
                         Swal.fire({
                             title: "Error",
                             text: "Something went wrong!",
