@@ -1,5 +1,5 @@
 @extends('layouts.partials.admin')
-@section('title', 'Manage Products')
+@section('title', 'Manage Category and Subcategory')
 <style>
     .image-preview {
         max-width: 300px;
