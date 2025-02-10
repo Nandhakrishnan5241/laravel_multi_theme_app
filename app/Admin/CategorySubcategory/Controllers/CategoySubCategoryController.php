@@ -149,10 +149,9 @@ class CategoySubCategoryController extends Controller
             $slug                = strtolower(str_replace(' ', '', $name));
             $categoryId          = $request->input('editCategory');
             $subcategoryId       = $request->input('editSubCategory');
-            $description         = $request->input('description');
+            $description         = $request->input('editDescription');
             $currentImage        = $request->input('currentImage');
             $fullPath            = '../../';
-dd($name);
             if (!empty($request->editImage)) {
                 $request->validate([
                     'editImage'       => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -169,9 +168,9 @@ dd($name);
             } else {
                 $fullPath    = $currentImage;
             }
-            
+            $data                = CategorySubCategory::find($id);
 
-            if($categoryId == 'c_add'){
+            if($categoryId == 'c_add' || $data->parent_id == Null){
                 $parent_id      = Null;
                 $level          = 0;
                 $level_name     = 'category';

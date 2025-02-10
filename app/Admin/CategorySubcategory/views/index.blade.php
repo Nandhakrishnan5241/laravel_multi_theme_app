@@ -112,6 +112,9 @@
         <form id="editForm" action="{{ route('categorysubcategory.update') }}" method="POST">
             @csrf
             <div class="row">
+                <input type="hidden" id="id" name="id">
+                <input class="form-control" name="currentImage" id="currentImage" type="hidden"
+                    placeholder="" />
                 <div class="col-6 mb-3">
                     <label for="category">Category</label>
                     <select class="form-select" name="editCategory" id="editCategory">
