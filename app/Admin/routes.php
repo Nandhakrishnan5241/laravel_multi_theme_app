@@ -1,6 +1,7 @@
 <?php
 
 use App\Admin\Categories\Controllers\CategoryController;
+use App\Admin\CategorySubcategory\Controllers\CategoySubCategoryController;
 use App\Admin\Clients\Controllers\ClientsController;
 use App\Admin\Modules\Controllers\ModulesController;
 use App\Admin\Permissions\Controllers\PermissionsController;
@@ -104,6 +105,15 @@ Route::prefix('bsadmin/subcategory')->middleware('auth')->group(function(){
     Route::get('/delete/{id}', [SubcategoryController::class, 'delete'])->name('subcategory.delete');
     Route::post('/save', [SubcategoryController::class, 'save'])->name('subcategory.save');
     Route::post('/update', [SubcategoryController::class, 'update'])->name('subcategory.update');
+});
+Route::prefix('bsadmin/categorysubcategory')->middleware('auth')->group(function(){
+    Route::get('/', [CategoySubCategoryController::class, 'index'])->middleware('check.permission:categorysubcategory.view');
+    Route::get('/getdetails', [CategoySubCategoryController::class, 'getDetails'])->name('categorysubcategory.getdetails');
+    Route::get('/add', [CategoySubCategoryController::class, 'add'])->name('categorysubcategory.add');
+    Route::get('{id}/edit', [CategoySubCategoryController::class, 'edit'])->name('categorysubcategory.edit');
+    Route::get('/delete/{id}', [CategoySubCategoryController::class, 'delete'])->name('categorysubcategory.delete');
+    Route::post('/save', [CategoySubCategoryController::class, 'save'])->name('categorysubcategory.save');
+    Route::post('/update', [CategoySubCategoryController::class, 'update'])->name('categorysubcategory.update');
 });
 
 Route::fallback(function () {

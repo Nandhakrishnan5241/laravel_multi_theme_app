@@ -79,12 +79,20 @@ class ModuleSeeder extends Seeder
             'order' => 8
         ]);
         Module::firstOrCreate([
+            'name' => 'Category Sub Category',
+            'slug' => 'categorysubcategory',
+            'icon' => 'fa-solid fa-cart-shopping',
+            'url'  => 'categorysubcategory',
+            'tab'  => 'outer',
+            'order' => 9
+        ]);
+        Module::firstOrCreate([
             'name' => 'Products',
             'slug' => 'products',
             'icon' => 'fa-solid fa-basket-shopping',
             'url'  => 'products',
             'tab'  => 'outer',
-            'order' => 9
+            'order' => 10
         ]);
 
         echo "data inserted successfully...";

@@ -31,6 +31,7 @@ class AppServiceProvider extends ServiceProvider
         View::addNamespace('categories', base_path('app/admin/categories/views'));
         View::addNamespace('products', base_path('app/admin/products/views'));
         View::addNamespace('subcategory', base_path('app/admin/subcategory/views'));
+        View::addNamespace('categorysubcategory', base_path('app/admin/categorysubcategory/views'));
 
      
         $this->loadModuleRoutes();
