@@ -160,14 +160,15 @@ class CategoySubCategoryController extends Controller
                 $imageName = $slug. '_' . $id . '.' . $request->editImage->extension();
                 if($categoryName){
                     $imagePath = 'images/category/';
-                    $fullPath  = $imagePath . $imageName;
+                    $fullPath  = '../../'.$imagePath . $imageName;
                 }else{
                     $imagePath = 'images/subcategory/';
-                    $fullPath  = $imagePath . $imageName;
+                    $fullPath  = '../../'.$imagePath . $imageName;
                 }
             } else {
                 $fullPath    = $currentImage;
             }
+            $request->editImage->move(public_path($imagePath), $imageName);
             $data                = CategorySubCategory::find($id);
 
             if($categoryId == 'c_add' || $data->parent_id == Null){
